@@ -114,7 +114,7 @@ graph TB
 ## Quick Start
 
 ```bash
-git clone https://github.com/yourusername/aegilon.git
+git clone https://github.com/vivekjami/aegilon.git
 cd aegilon
 npm install
 npm run dev
