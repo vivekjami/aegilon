@@ -1,13 +1,15 @@
 require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-ethers");
-require("@typechain/hardhat");
 require("hardhat-gas-reporter");
 require("solidity-coverage");
 require("dotenv").config();
 
-const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x" + "0".repeat(64);
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const GOLDSKY_API_KEY = process.env.GOLDSKY_API_KEY || "";
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "";
+
+// Generate a dummy private key for development if none provided
+const DUMMY_PRIVATE_KEY = "0x0000000000000000000000000000000000000000000000000000000000000001";
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
@@ -28,7 +30,7 @@ module.exports = {
     etherlinkGhostnet: {
       url: process.env.ETHERLINK_GHOSTNET_RPC || "https://node.ghostnet.etherlink.com",
       chainId: 128123,
-      accounts: PRIVATE_KEY !== "0x" + "0".repeat(64) ? [PRIVATE_KEY] : [],
+      accounts: PRIVATE_KEY ? [PRIVATE_KEY] : [DUMMY_PRIVATE_KEY],
       gas: 2100000,
       gasPrice: 8000000000,
       timeout: 60000,
@@ -37,7 +39,7 @@ module.exports = {
     etherlinkMainnet: {
       url: process.env.ETHERLINK_MAINNET_RPC || "https://node.mainnet.etherlink.com",
       chainId: 42793,
-      accounts: PRIVATE_KEY !== "0x" + "0".repeat(64) ? [PRIVATE_KEY] : [],
+      accounts: PRIVATE_KEY ? [PRIVATE_KEY] : [DUMMY_PRIVATE_KEY],
       gas: 2100000,
       gasPrice: 8000000000,
       timeout: 60000,
@@ -73,10 +75,6 @@ module.exports = {
         },
       },
     ],
-  },
-  typechain: {
-    outDir: "typechain-types",
-    target: "ethers-v5",
   },
   paths: {
     sources: "./contracts",
