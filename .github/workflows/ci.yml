@@ -1,0 +1,171 @@
+name: 🛡️ Aegilon CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  NODE_VERSION: '20.x'
+
+jobs:
+  test:
+    name: 🧪 Smart Contract Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout Code
+      uses: actions/checkout@v4
+      
+    - name: 🟢 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        
+    - name: 📦 Install Dependencies
+      run: |
+        npm ci
+        npm install -g @goldsky/cli
+        
+    - name: 🔧 Compile Contracts
+      run: npx hardhat compile
+      
+    - name: 🧪 Run Tests
+      run: npx hardhat test
+      
+    - name: 📊 Generate Coverage Report
+      run: npx hardhat coverage
+      
+    - name: 📈 Upload Coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage/lcov.info
+        fail_ci_if_error: true
+
+  security:
+    name: 🔒 Security Audit
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+    - name: 📥 Checkout Code
+      uses: actions/checkout@v4
+      
+    - name: 🟢 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        
+    - name: 📦 Install Dependencies
+      run: npm ci
+      
+    - name: 🛡️ Run Slither Analysis
+      uses: crytic/slither-action@v0.3.0
+      id: slither
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        
+    - name: 🔍 Mythril Security Analysis
+      run: |
+        pip install mythril
+        myth analyze contracts/ --solv 0.8.20
+
+  gas-optimization:
+    name: ⛽ Gas Optimization Check
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+    - name: 📥 Checkout Code
+      uses: actions/checkout@v4
+      
+    - name: 🟢 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        
+    - name: 📦 Install Dependencies
+      run: npm ci
+      
+    - name: ⛽ Generate Gas Report
+      run: |
+        REPORT_GAS=true npx hardhat test
+        
+    - name: 📊 Comment Gas Report
+      uses: actions/github-script@v6
+      if: github.event_name == 'pull_request'
+      with:
+        script: |
+          const fs = require('fs');
+          const gasReport = fs.readFileSync('gas-report.txt', 'utf8');
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `## ⛽ Gas Usage Report\n\n\`\`\`\n${gasReport}\n\`\`\``
+          });
+
+  deploy-testnet:
+    name: 🚀 Deploy to Etherlink Testnet
+    runs-on: ubuntu-latest
+    needs: [test, security]
+    if: github.ref == 'refs/heads/main'
+    
+    environment:
+      name: testnet
+      url: https://explorer.ghostnet.etherlink.com
+      
+    steps:
+    - name: 📥 Checkout Code
+      uses: actions/checkout@v4
+      
+    - name: 🟢 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        
+    - name: 📦 Install Dependencies
+      run: npm ci
+      
+    - name: 🔧 Compile Contracts
+      run: npx hardhat compile
+      
+    - name: 🚀 Deploy to Etherlink Ghostnet
+      env:
+        PRIVATE_KEY: ${{ secrets.DEPLOYER_PRIVATE_KEY }}
+        ETHERLINK_GHOSTNET_RPC: ${{ secrets.ETHERLINK_GHOSTNET_RPC }}
+        TREASURY_ADDRESS: ${{ secrets.TREASURY_ADDRESS }}
+        LIQUIDITY_REWARDS_ADDRESS: ${{ secrets.LIQUIDITY_REWARDS_ADDRESS }}
+      run: |
+        npx hardhat run scripts/deploy.js --network etherlinkGhostnet
+        
+    - name: 📄 Save Deployment Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: deployment-artifacts
+        path: |
+          deployments/
+          artifacts/
+
+  notify:
+    name: 📢 Notify Team
+    runs-on: ubuntu-latest
+    needs: [test, security, gas-optimization, deploy-testnet]
+    if: always()
+    
+    steps:
+    - name: 🎉 Success Notification
+      if: needs.test.result == 'success' && needs.security.result == 'success'
+      run: |
+        echo "✅ All checks passed! Aegilon is ready for battle against MEV attacks!"
+        
+    - name: ❌ Failure Notification
+      if: needs.test.result == 'failure' || needs.security.result == 'failure'
+      run: |
+        echo "❌ Pipeline failed. The shield needs reinforcement!"
+        exit 1

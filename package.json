@@ -1,21 +1,51 @@
 {
   "name": "aegilon",
   "version": "1.0.0",
-  "description": "**Ultra-Fast MEV Protection Oracle for Etherlink**",
+  "description": "Ultra-Fast MEV Protection Oracle for Etherlink",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx hardhat test",
+    "build": "npx hardhat compile",
+    "deploy:testnet": "npx hardhat run scripts/deploy.js --network etherlinkGhostnet",
+    "deploy:mainnet": "npx hardhat run scripts/deploy.js --network etherlinkMainnet",
+    "dev": "npm run build && npm run test",
+    "start": "node scripts/start.js",
+    "subgraph:build": "cd subgraph && graph build",
+    "subgraph:deploy": "cd subgraph && graph deploy",
+    "frontend:dev": "cd frontend && npm run dev",
+    "frontend:build": "cd frontend && npm run build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vivekjami/aegilon.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["MEV", "DeFi", "Etherlink", "Oracle", "Protection", "L2", "Blockchain"],
+  "author": "Aegilon Team",
+  "license": "Apache-2.0",
   "type": "commonjs",
   "bugs": {
     "url": "https://github.com/vivekjami/aegilon/issues"
   },
-  "homepage": "https://github.com/vivekjami/aegilon#readme"
+  "homepage": "https://github.com/vivekjami/aegilon#readme",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@nomiclabs/hardhat-waffle": "^2.0.6",
+    "@types/chai": "^4.3.5",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^20.4.5",
+    "chai": "^4.3.7",
+    "ethereum-waffle": "^4.0.10",
+    "hardhat": "^2.17.1",
+    "hardhat-gas-reporter": "^1.0.9",
+    "solidity-coverage": "^0.8.4",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.9.3",
+    "@thirdweb-dev/sdk": "^4.0.35",
+    "ethers": "^5.7.2",
+    "dotenv": "^16.3.1",
+    "axios": "^1.4.0",
+    "web3": "^4.0.3"
+  }
 }
