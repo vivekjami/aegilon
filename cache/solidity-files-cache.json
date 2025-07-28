@@ -434,6 +434,435 @@
       "artifacts": [
         "MEVProtector"
       ]
+    },
+    "/home/vivek/vivek/aegilon/contracts/MEVDetector.sol": {
+      "lastModificationDate": 1753676760447,
+      "contentHash": "1e4c26ff85459f56607354f544f908ec",
+      "sourceName": "contracts/MEVDetector.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/access/Ownable.sol",
+        "@redstone-finance/evm-connector/contracts/data-services/MainDemoConsumerBase.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "MEVDetector"
+      ]
+    },
+    "/home/vivek/vivek/aegilon/node_modules/@redstone-finance/evm-connector/contracts/data-services/MainDemoConsumerBase.sol": {
+      "lastModificationDate": 1753676617734,
+      "contentHash": "172f555c38efd6ff3bc593edc995ff8b",
+      "sourceName": "@redstone-finance/evm-connector/contracts/data-services/MainDemoConsumerBase.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../core/RedstoneConsumerNumericBase.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.17"
+      ],
+      "artifacts": [
+        "MainDemoConsumerBase"
+      ]
+    },
+    "/home/vivek/vivek/aegilon/node_modules/@redstone-finance/evm-connector/contracts/core/RedstoneConsumerNumericBase.sol": {
+      "lastModificationDate": 1753676617741,
+      "contentHash": "beb059353410c61c07bf21e34d8a181d",
+      "sourceName": "@redstone-finance/evm-connector/contracts/core/RedstoneConsumerNumericBase.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./RedstoneConsumerBase.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.17"
+      ],
+      "artifacts": [
+        "RedstoneConsumerNumericBase"
+      ]
+    },
+    "/home/vivek/vivek/aegilon/node_modules/@redstone-finance/evm-connector/contracts/core/RedstoneConsumerBase.sol": {
+      "lastModificationDate": 1753676617740,
+      "contentHash": "c02352dc90ee5c9bc35d722915ed1694",
+      "sourceName": "@redstone-finance/evm-connector/contracts/core/RedstoneConsumerBase.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./RedstoneConstants.sol",
+        "./RedstoneDefaultsLib.sol",
+        "./CalldataExtractor.sol",
+        "../libs/BitmapLib.sol",
+        "../libs/SignatureLib.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.17"
+      ],
+      "artifacts": [
+        "RedstoneConsumerBase"
+      ]
+    },
+    "/home/vivek/vivek/aegilon/node_modules/@redstone-finance/evm-connector/contracts/libs/BitmapLib.sol": {
+      "lastModificationDate": 1753676617728,
+      "contentHash": "254cdbc8ac14a44e51b81290ca50b8f7",
+      "sourceName": "@redstone-finance/evm-connector/contracts/libs/BitmapLib.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.17"
+      ],
+      "artifacts": [
+        "BitmapLib"
+      ]
+    },
+    "/home/vivek/vivek/aegilon/node_modules/@redstone-finance/evm-connector/contracts/libs/SignatureLib.sol": {
+      "lastModificationDate": 1753676617753,
+      "contentHash": "1e303e41cca04514e004ba4c81460e5c",
+      "sourceName": "@redstone-finance/evm-connector/contracts/libs/SignatureLib.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.17"
+      ],
+      "artifacts": [
+        "SignatureLib"
+      ]
+    },
+    "/home/vivek/vivek/aegilon/node_modules/@redstone-finance/evm-connector/contracts/core/RedstoneConstants.sol": {
+      "lastModificationDate": 1753676617740,
+      "contentHash": "e3e8a019c0bfbdaad2d0af07c090271e",
+      "sourceName": "@redstone-finance/evm-connector/contracts/core/RedstoneConstants.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.17"
+      ],
+      "artifacts": [
+        "RedstoneConstants"
+      ]
+    },
+    "/home/vivek/vivek/aegilon/node_modules/@redstone-finance/evm-connector/contracts/core/CalldataExtractor.sol": {
+      "lastModificationDate": 1753676617732,
+      "contentHash": "e7401ae098a442d80b2bac93879be07c",
+      "sourceName": "@redstone-finance/evm-connector/contracts/core/CalldataExtractor.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./RedstoneConstants.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.17"
+      ],
+      "artifacts": [
+        "CalldataExtractor"
+      ]
+    },
+    "/home/vivek/vivek/aegilon/node_modules/@redstone-finance/evm-connector/contracts/core/RedstoneDefaultsLib.sol": {
+      "lastModificationDate": 1753676617743,
+      "contentHash": "c9d236d4db8d6faaf53c9ae452e14ca2",
+      "sourceName": "@redstone-finance/evm-connector/contracts/core/RedstoneDefaultsLib.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../libs/NumericArrayLib.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.17"
+      ],
+      "artifacts": [
+        "RedstoneDefaultsLib"
+      ]
+    },
+    "/home/vivek/vivek/aegilon/node_modules/@redstone-finance/evm-connector/contracts/libs/NumericArrayLib.sol": {
+      "lastModificationDate": 1753676617736,
+      "contentHash": "a4373a31f6d2f6ab1440580e588a1ff7",
+      "sourceName": "@redstone-finance/evm-connector/contracts/libs/NumericArrayLib.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.17"
+      ],
+      "artifacts": [
+        "NumericArrayLib"
+      ]
+    },
+    "/home/vivek/vivek/aegilon/contracts/MEVProtectorAdvanced.sol": {
+      "lastModificationDate": 1753677172376,
+      "contentHash": "60c29765ab713f6b8386a154228b182b",
+      "sourceName": "contracts/MEVProtectorAdvanced.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./MEVDetector.sol",
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "@openzeppelin/contracts/security/ReentrancyGuard.sol",
+        "@openzeppelin/contracts/access/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "MEVProtectorAdvanced"
+      ]
     }
   }
 }

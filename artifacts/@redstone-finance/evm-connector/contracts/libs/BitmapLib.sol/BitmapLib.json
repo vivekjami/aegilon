@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "BitmapLib",
+  "sourceName": "@redstone-finance/evm-connector/contracts/libs/BitmapLib.sol",
+  "abi": [],
+  "bytecode": "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea26469706673582212206c8e54c6b2027f2b891b3e9199e993d098cfeb55755d77727f58365cab5dfd3064736f6c63430008140033",
+  "deployedBytecode": "0x600080fdfea26469706673582212206c8e54c6b2027f2b891b3e9199e993d098cfeb55755d77727f58365cab5dfd3064736f6c63430008140033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

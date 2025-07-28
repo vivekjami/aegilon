@@ -19,7 +19,15 @@
     "type": "git",
     "url": "git+https://github.com/vivekjami/aegilon.git"
   },
-  "keywords": ["MEV", "DeFi", "Etherlink", "Oracle", "Protection", "L2", "Blockchain"],
+  "keywords": [
+    "MEV",
+    "DeFi",
+    "Etherlink",
+    "Oracle",
+    "Protection",
+    "L2",
+    "Blockchain"
+  ],
   "author": "Aegilon Team",
   "license": "Apache-2.0",
   "type": "commonjs",
@@ -42,10 +50,11 @@
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.9.3",
+    "@redstone-finance/evm-connector": "^0.8.0",
     "@thirdweb-dev/sdk": "^4.0.35",
-    "ethers": "^5.7.2",
-    "dotenv": "^16.3.1",
     "axios": "^1.4.0",
+    "dotenv": "^16.3.1",
+    "ethers": "^5.7.2",
     "web3": "^4.0.3"
   }
 }

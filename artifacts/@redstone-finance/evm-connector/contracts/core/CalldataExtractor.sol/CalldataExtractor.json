@@ -1,0 +1,117 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "CalldataExtractor",
+  "sourceName": "@redstone-finance/evm-connector/contracts/core/CalldataExtractor.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "CalldataMustHaveValidPayload",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "CalldataOverOrUnderFlow",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "DataPackageTimestampMustNotBeZero",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "DataPackageTimestampsMustBeEqual",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "DataTimestampCannotBeZero",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "EachSignerMustProvideTheSameValue",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "EmptyCalldataPointersArr",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "IncorrectUnsignedMetadataSize",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "receivedSignersCount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "requiredSignersCount",
+          "type": "uint256"
+        }
+      ],
+      "name": "InsufficientNumberOfUniqueSigners",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidCalldataPointer",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "RedstonePayloadMustHaveAtLeastOneDataPackage",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "receivedSigner",
+          "type": "address"
+        }
+      ],
+      "name": "SignerNotAuthorised",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "TimestampsMustBeEqual",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "valueByteSize",
+          "type": "uint256"
+        }
+      ],
+      "name": "TooLargeValueByteSize",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "extractTimestampsAndAssertAllAreEqual",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "extractedTimestamp",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x60808060405234610016576102a9908161001c8239f35b600080fdfe60806040908082526004918236101561001757600080fd5b6000803560e01c6355a547d51461002d57600080fd5b3461024d578060031936011261024d5780926602ed57011e000080601f19360135160361023f57503660291161022f5762ffffff9336602819013585166003810180821161021c57600c820180911161021c57600e8201908181116101785736821161020c57602c83018091116101785736106101fc573691909103602b19013561ffff169586156101ec5783915b8783106100cd576020878751908152f35b604181018082116101d957606182018091116101d9576100ed9036610250565b600219810197908089116101c6578390351663ffffffff602099351689018099116101c65788810298818a0414901517156101d957604e9081890189116101c657606883018084116101b35761014a65ffffffffffff9136610250565b35169081156101a3578061018b5750975b8201018091116101785791600019811461017857600101916100bc565b634e487b7160e01b855260118452602485fd5b9890891461015b57875163d9d1f46560e01b81528690fd5b8851630336dc9d60e41b81528790fd5b634e487b7160e01b885260118752602488fd5b634e487b7160e01b875260118652602487fd5b634e487b7160e01b865260118552602486fd5b8451632154bfcf60e21b81528390fd5b8451632bcb7bc560e11b81528390fd5b855163c30a7bd760e01b81528490fd5b634e487b7160e01b845260118352602484fd5b8151632bcb7bc560e11b81528490fd5b6373bb264f60e11b81528490fd5b80fd5b9190820391821161025d57565b634e487b7160e01b600052601160045260246000fdfea26469706673582212207da0bbf18d02fecd506a04af477f9e3b5709cd42122a53771ae50e7c1194ca6764736f6c63430008140033",
+  "deployedBytecode": "0x60806040908082526004918236101561001757600080fd5b6000803560e01c6355a547d51461002d57600080fd5b3461024d578060031936011261024d5780926602ed57011e000080601f19360135160361023f57503660291161022f5762ffffff9336602819013585166003810180821161021c57600c820180911161021c57600e8201908181116101785736821161020c57602c83018091116101785736106101fc573691909103602b19013561ffff169586156101ec5783915b8783106100cd576020878751908152f35b604181018082116101d957606182018091116101d9576100ed9036610250565b600219810197908089116101c6578390351663ffffffff602099351689018099116101c65788810298818a0414901517156101d957604e9081890189116101c657606883018084116101b35761014a65ffffffffffff9136610250565b35169081156101a3578061018b5750975b8201018091116101785791600019811461017857600101916100bc565b634e487b7160e01b855260118452602485fd5b9890891461015b57875163d9d1f46560e01b81528690fd5b8851630336dc9d60e41b81528790fd5b634e487b7160e01b885260118752602488fd5b634e487b7160e01b875260118652602487fd5b634e487b7160e01b865260118552602486fd5b8451632154bfcf60e21b81528390fd5b8451632bcb7bc560e11b81528390fd5b855163c30a7bd760e01b81528490fd5b634e487b7160e01b845260118352602484fd5b8151632bcb7bc560e11b81528490fd5b6373bb264f60e11b81528490fd5b80fd5b9190820391821161025d57565b634e487b7160e01b600052601160045260246000fdfea26469706673582212207da0bbf18d02fecd506a04af477f9e3b5709cd42122a53771ae50e7c1194ca6764736f6c63430008140033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

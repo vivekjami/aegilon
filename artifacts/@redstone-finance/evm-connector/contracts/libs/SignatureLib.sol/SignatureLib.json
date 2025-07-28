@@ -1,0 +1,22 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "SignatureLib",
+  "sourceName": "@redstone-finance/evm-connector/contracts/libs/SignatureLib.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "signedHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "InvalidSignature",
+      "type": "error"
+    }
+  ],
+  "bytecode": "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea26469706673582212200cba69455da1f4e563b9eba42e6d8e7738da408c9097ea619f1e48c3e2b2b13764736f6c63430008140033",
+  "deployedBytecode": "0x600080fdfea26469706673582212200cba69455da1f4e563b9eba42e6d8e7738da408c9097ea619f1e48c3e2b2b13764736f6c63430008140033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
