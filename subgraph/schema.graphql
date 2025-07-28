@@ -1,0 +1,203 @@
+# Aegilon MEV Protection Schema
+# GraphQL schema for real-time MEV monitoring and user analytics
+
+type User @entity {
+  id: ID! # User address
+  address: Bytes!
+  
+  # Staking Information
+  stakedBalance: BigInt!
+  protectionLevel: Int!
+  isProtected: Boolean!
+  stakingRewards: BigInt!
+  lastStakeTime: BigInt!
+  
+  # Protection Statistics
+  threatsDetected: Int!
+  threatsPrevented: Int!
+  totalSavedAmount: BigInt!
+  
+  # Token Activity
+  aegBalance: BigInt!
+  totalStaked: BigInt!
+  totalUnstaked: BigInt!
+  totalRewardsClaimed: BigInt!
+  
+  # Relationships
+  stakingEvents: [StakingEvent!]! @derivedFrom(field: "user")
+  protectionEvents: [ProtectionEvent!]! @derivedFrom(field: "user")
+  threatReports: [ThreatReport!]! @derivedFrom(field: "reporter")
+  
+  # Timestamps
+  firstStakeTime: BigInt
+  createdAt: BigInt!
+  updatedAt: BigInt!
+}
+
+type StakingEvent @entity {
+  id: ID! # Transaction hash + log index
+  user: User!
+  type: StakingEventType!
+  amount: BigInt!
+  newStakedBalance: BigInt!
+  newProtectionLevel: Int!
+  
+  # Transaction Details
+  transactionHash: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  gasUsed: BigInt!
+}
+
+enum StakingEventType {
+  STAKE
+  UNSTAKE
+  REWARDS_CLAIMED
+}
+
+type MEVThreat @entity {
+  id: ID! # Threat ID (bytes32)
+  threatId: Bytes!
+  
+  # Threat Details
+  target: User!
+  attacker: Bytes!
+  threatType: ThreatType!
+  estimatedLoss: BigInt!
+  
+  # Status
+  prevented: Boolean!
+  reporter: Bytes!
+  
+  # Associated Events
+  protectionEvent: ProtectionEvent
+  reports: [ThreatReport!]! @derivedFrom(field: "threat")
+  
+  # Timestamps
+  detectedAt: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+
+enum ThreatType {
+  SANDWICH_ATTACK
+  FRONTRUNNING
+  BACKRUNNING
+  JIT_LIQUIDITY
+  ARBITRAGE
+  LIQUIDATION_MEV
+}
+
+type ProtectionEvent @entity {
+  id: ID! # Transaction hash + log index
+  user: User!
+  threat: MEVThreat!
+  
+  # Protection Details
+  savedAmount: BigInt!
+  protectionLevel: Int!
+  successful: Boolean!
+  
+  # Reward Information
+  rewardAmount: BigInt!
+  
+  # Transaction Details
+  transactionHash: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+}
+
+type ThreatReport @entity {
+  id: ID! # Transaction hash + log index
+  reporter: User!
+  threat: MEVThreat!
+  
+  # Reward Information
+  rewardAmount: BigInt!
+  
+  # Transaction Details
+  transactionHash: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+}
+
+type OracleUpdate @entity {
+  id: ID! # Symbol + block number
+  symbol: String!
+  price: BigInt!
+  
+  # Previous price for comparison
+  previousPrice: BigInt
+  priceChange: BigInt
+  priceChangePercent: BigDecimal
+  
+  # Transaction Details
+  transactionHash: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+}
+
+type ProtocolStats @entity {
+  id: ID! # Singleton "1"
+  
+  # Token Statistics
+  totalSupply: BigInt!
+  totalStaked: BigInt!
+  totalUsers: Int!
+  totalProtectedUsers: Int!
+  
+  # MEV Protection Statistics
+  totalThreatsDetected: Int!
+  totalThreatsPrevented: Int!
+  totalAmountSaved: BigInt!
+  
+  # Reward Statistics
+  totalRewardsDistributed: BigInt!
+  totalThreatReports: Int!
+  
+  # Protection Level Distribution
+  level1Users: Int!
+  level2Users: Int!
+  level3Users: Int!
+  level4Users: Int!
+  level5Users: Int!
+  
+  # Last Update
+  lastUpdated: BigInt!
+}
+
+type DailyStats @entity {
+  id: ID! # Date in YYYY-MM-DD format
+  date: String!
+  
+  # Daily Activity
+  newUsers: Int!
+  activeUsers: Int!
+  totalStaked: BigInt!
+  totalUnstaked: BigInt!
+  
+  # MEV Protection
+  threatsDetected: Int!
+  threatsPrevented: Int!
+  amountSaved: BigInt!
+  
+  # Rewards
+  rewardsDistributed: BigInt!
+  threatReports: Int!
+  
+  # Averages
+  averageProtectionLevel: BigDecimal!
+  averageStakedPerUser: BigDecimal!
+}
+
+type TokenTransfer @entity {
+  id: ID! # Transaction hash + log index
+  from: Bytes!
+  to: Bytes!
+  amount: BigInt!
+  
+  # Transaction Details
+  transactionHash: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+}

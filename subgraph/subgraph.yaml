@@ -1,0 +1,68 @@
+# Aegilon Goldsky Subgraph Configuration
+# Real-time MEV detection and transaction monitoring
+
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: AegilonToken
+    network: etherlink-testnet
+    source:
+      address: "0x0000000000000000000000000000000000000000" # Will be updated after deployment
+      abi: AegilonToken
+      startBlock: 0 # Will be updated with deployment block
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - User
+        - StakingEvent
+        - ProtectionLevel
+        - TokenTransfer
+      abis:
+        - name: AegilonToken
+          file: ../artifacts/contracts/AegilonToken.sol/AegilonToken.json
+      eventHandlers:
+        - event: TokensStaked(indexed address,uint256)
+          handler: handleTokensStaked
+        - event: TokensUnstaked(indexed address,uint256)
+          handler: handleTokensUnstaked
+        - event: RewardsClaimed(indexed address,uint256)
+          handler: handleRewardsClaimed
+        - event: ProtectionActivated(indexed address,uint256)
+          handler: handleProtectionActivated
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/aegilon-token.ts
+
+  - kind: ethereum/contract
+    name: MEVProtector
+    network: etherlink-testnet
+    source:
+      address: "0x0000000000000000000000000000000000000000" # Will be updated after deployment
+      abi: MEVProtector
+      startBlock: 0 # Will be updated with deployment block
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - MEVThreat
+        - ProtectionEvent
+        - ThreatReport
+        - OracleUpdate
+      abis:
+        - name: MEVProtector
+          file: ../artifacts/contracts/MEVProtector.sol/MEVProtector.json
+      eventHandlers:
+        - event: MEVThreatDetected(indexed bytes32,indexed address,indexed address,uint256,uint256)
+          handler: handleMEVThreatDetected
+        - event: MEVThreatPrevented(indexed bytes32,indexed address,uint256,uint256)
+          handler: handleMEVThreatPrevented
+        - event: ThreatReported(indexed address,indexed bytes32,uint256)
+          handler: handleThreatReported
+        - event: OraclePriceUpdated(indexed string,uint256,uint256)
+          handler: handleOraclePriceUpdated
+      file: ./src/mev-protector.ts

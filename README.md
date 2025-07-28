@@ -261,3 +261,123 @@ Special thanks to the Etherlink team and technology partners:
 ---
 
 **Aegilon: Your shield against MEV attacks on Etherlink**
+
+## 🪙 Tokenomics - $AEG Token
+
+**Aegilon Token ($AEG)** is the native ERC-20 utility and governance token powering the entire MEV protection ecosystem.
+
+### Token Distribution & Supply
+- **Total Supply**: 10,000,000 AEG (fixed supply, no inflation)
+- **Precision**: 18 decimals
+- **Contract**: Deployed on Etherlink with full transparency
+
+#### Distribution Breakdown:
+```
+📊 DISTRIBUTION OVERVIEW
+├── 40% (4M AEG) - Liquidity Rewards & User Incentives
+│   ├── Staking rewards for protection users
+│   ├── Threat detection bounties
+│   └── DeFi protocol integration rewards
+├── 30% (3M AEG) - Governance & DAO Treasury
+│   ├── Protocol development funding
+│   ├── Community grants
+│   └── Emergency response reserves
+├── 20% (2M AEG) - Team & Development
+│   ├── 24-month linear vesting
+│   ├── Performance-based unlocks
+│   └── Long-term alignment incentives
+└── 10% (1M AEG) - Community & Hackathon
+    ├── Hackathon airdrops
+    ├── Beta tester rewards
+    └── Community building initiatives
+```
+
+### Utility Functions
+
+#### 🛡️ **MEV Protection Staking**
+- **Stake AEG** to activate MEV protection
+- **Protection Levels** based on staked amount:
+  - **Level 1** (10+ AEG): Basic front-running protection
+  - **Level 2** (100+ AEG): Sandwich attack prevention
+  - **Level 3** (1,000+ AEG): Advanced multi-vector protection
+  - **Level 4** (5,000+ AEG): Premium institutional-grade protection
+  - **Level 5** (10,000+ AEG): Maximum protection + priority support
+
+#### 🏛️ **Governance Rights**
+- **Proposal Creation**: 100,000 AEG minimum
+- **Voting Power**: 1 AEG = 1 vote
+- **Governance Scope**:
+  - Protocol parameter adjustments
+  - MEV detection algorithm updates
+  - Treasury fund allocation
+  - Partnership approvals
+
+#### 💰 **Reward Mechanisms**
+- **Staking APR**: 5% base rate (boosted for active protection)
+- **Threat Detection**: 10 AEG reward per verified threat report
+- **Protection Success**: 5 AEG bonus for successful MEV blocks
+- **Referral Program**: 2% of referred user's first-year staking rewards
+
+#### 🔧 **Premium Features**
+- **Advanced Analytics**: Historical MEV attack analysis
+- **Custom Alerts**: Real-time threat notifications
+- **API Access**: Integration with trading bots and strategies
+- **Priority Support**: Dedicated protection team assistance
+
+### Economic Model
+
+#### **Deflationary Mechanisms**
+- **Burn on Penalties**: 50% of MEV attack penalties burned
+- **Feature Fees**: Premium feature access burns 0.1% of transaction
+- **Governance Costs**: Proposal submission fee (1,000 AEG) burned if rejected
+
+#### **Value Accrual**
+- **Network Effects**: More protected users = higher token demand
+- **Utility Growth**: Expanding use cases across Etherlink DeFi
+- **Scarcity**: Fixed supply with deflationary pressure
+
+### Getting Started with $AEG
+
+```bash
+# 1. Acquire AEG tokens (post-launch)
+# Available on Etherlink DEXs: QuipuSwap, SpicySwap, etc.
+
+# 2. Stake for protection
+aegilon.stakeTokens(amount)
+
+# 3. Activate MEV protection
+aegilon.activateProtection()
+
+# 4. Earn rewards while staying protected
+# Automatic rewards for staking + bonuses for threat reports
+```
+
+### Contract Addresses (Etherlink Testnet)
+```
+🏛️ AegilonToken (AEG): [Will be populated after deployment]
+🛡️ MEVProtector: [Will be populated after deployment]
+📊 Treasury: [Will be populated after deployment]
+💧 Liquidity Pool: [Will be populated after deployment]
+```
+
+## 🚀 Competitive Advantages
+
+### **Speed Advantage**
+- **Etherlink's 500ms finality** enables real-time MEV prevention
+- **Sub-second threat detection** impossible on slower chains
+- **Front-run the front-runners** using superior speed
+
+### **Cost Efficiency**
+- **Near-zero gas fees** enable micro-optimizations
+- **Profitable protection** even for small trades
+- **No transaction size minimums** unlike mainnet solutions
+
+### **Universal Protection**
+- **Works across all Etherlink protocols** without integration
+- **Automatic detection** of new attack vectors
+- **Future-proof architecture** adapts to new MEV techniques
+
+### **User-Centric Design**
+- **One-click activation** through familiar wallets
+- **No trading workflow changes** required
+- **Transparent reporting** of blocked attacks and saved funds
