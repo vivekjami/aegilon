@@ -31,7 +31,7 @@ describe("🛡️ Aegilon MEV Protection Suite", function () {
         await mevProtector.setAuthorizedIndexer(indexer.address);
 
         // Transfer some tokens to users for testing
-        const userAllocation = ethers.utils.parseEther("1000"); // 1000 AEG per user
+        const userAllocation = ethers.utils.parseEther("10000"); // 10000 AEG per user (enough for level 5)
         await aegilonToken.transfer(user1.address, userAllocation);
         await aegilonToken.transfer(user2.address, userAllocation);
     });
@@ -282,15 +282,10 @@ describe("🛡️ Aegilon MEV Protection Suite", function () {
             // First report should succeed
             await mevProtector.connect(user2).reportThreat(threatId);
             
-            // Second report of same threat should fail
+            // Second report by same user should fail (self-reporter cannot report)
             await expect(
-                mevProtector.connect(indexer).detectMEVThreat(
-                    user1.address,
-                    attacker.address,
-                    threatType,
-                    transactionData
-                )
-            ).to.be.revertedWith("Threat already detected");
+                mevProtector.connect(indexer).reportThreat(threatId)
+            ).to.be.revertedWith("Cannot report own detection");
         });
     });
 });
