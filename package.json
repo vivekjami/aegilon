@@ -36,6 +36,7 @@
   },
   "homepage": "https://github.com/vivekjami/aegilon#readme",
   "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.97.1",
     "@nomiclabs/hardhat-ethers": "^2.2.3",
     "@nomiclabs/hardhat-waffle": "^2.0.6",
     "@types/chai": "^4.3.5",
@@ -49,12 +50,15 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
+    "@graphprotocol/graph-ts": "^0.38.1",
     "@openzeppelin/contracts": "^4.9.3",
     "@redstone-finance/evm-connector": "^0.8.0",
     "@thirdweb-dev/sdk": "^4.0.35",
     "axios": "^1.4.0",
     "dotenv": "^16.3.1",
     "ethers": "^5.7.2",
-    "web3": "^4.0.3"
+    "graphql-request": "^7.2.0",
+    "web3": "^4.0.3",
+    "ws": "^8.18.3"
   }
 }
