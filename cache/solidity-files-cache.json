@@ -45,7 +45,7 @@
       ]
     },
     "/home/vivek/vivek/aegilon/node_modules/@openzeppelin/contracts/security/ReentrancyGuard.sol": {
-      "lastModificationDate": 1753638672712,
+      "lastModificationDate": 1754270137387,
       "contentHash": "1535f8c0c68463f8c1b5239f7584e71f",
       "sourceName": "@openzeppelin/contracts/security/ReentrancyGuard.sol",
       "solcConfig": {
@@ -82,7 +82,7 @@
       ]
     },
     "/home/vivek/vivek/aegilon/node_modules/@openzeppelin/contracts/access/Ownable.sol": {
-      "lastModificationDate": 1753638672671,
+      "lastModificationDate": 1754270137310,
       "contentHash": "5a20b2cad87ddb61c7a3a6af21289e28",
       "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
       "solcConfig": {
@@ -121,7 +121,7 @@
       ]
     },
     "/home/vivek/vivek/aegilon/node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
-      "lastModificationDate": 1753638670805,
+      "lastModificationDate": 1754270169480,
       "contentHash": "3ae5166c6827a9cf1a7a462d1632b464",
       "sourceName": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
       "solcConfig": {
@@ -161,48 +161,8 @@
         "ERC20"
       ]
     },
-    "/home/vivek/vivek/aegilon/node_modules/@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol": {
-      "lastModificationDate": 1753638670830,
-      "contentHash": "a1c7f80ae26f5b2d7d563475627fbf25",
-      "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol",
-      "solcConfig": {
-        "version": "0.8.20",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "viaIR": true,
-          "evmVersion": "paris",
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "../ERC20.sol",
-        "../../../utils/Context.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "ERC20Burnable"
-      ]
-    },
     "/home/vivek/vivek/aegilon/node_modules/@openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol": {
-      "lastModificationDate": 1753638670863,
+      "lastModificationDate": 1754270196184,
       "contentHash": "b9e6238c7bb16f87e7562ad2857080df",
       "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol",
       "solcConfig": {
@@ -241,8 +201,48 @@
         "ERC20Pausable"
       ]
     },
+    "/home/vivek/vivek/aegilon/node_modules/@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol": {
+      "lastModificationDate": 1754270196183,
+      "contentHash": "a1c7f80ae26f5b2d7d563475627fbf25",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../ERC20.sol",
+        "../../../utils/Context.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ERC20Burnable"
+      ]
+    },
     "/home/vivek/vivek/aegilon/node_modules/@openzeppelin/contracts/utils/Context.sol": {
-      "lastModificationDate": 1753638669718,
+      "lastModificationDate": 1754270137479,
       "contentHash": "f07feb4a44b1a4872370da5aa70e8e46",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
       "solcConfig": {
@@ -278,8 +278,45 @@
         "Context"
       ]
     },
+    "/home/vivek/vivek/aegilon/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+      "lastModificationDate": 1754270169474,
+      "contentHash": "df36f7051335cd1e748b1b6463b7fdd3",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC20"
+      ]
+    },
     "/home/vivek/vivek/aegilon/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
-      "lastModificationDate": 1753638671786,
+      "lastModificationDate": 1754270196184,
       "contentHash": "909ab67fc5c25033fe6cd364f8c056f9",
       "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
       "solcConfig": {
@@ -317,45 +354,8 @@
         "IERC20Metadata"
       ]
     },
-    "/home/vivek/vivek/aegilon/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
-      "lastModificationDate": 1753638671767,
-      "contentHash": "df36f7051335cd1e748b1b6463b7fdd3",
-      "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
-      "solcConfig": {
-        "version": "0.8.20",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "viaIR": true,
-          "evmVersion": "paris",
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IERC20"
-      ]
-    },
     "/home/vivek/vivek/aegilon/node_modules/@openzeppelin/contracts/security/Pausable.sol": {
-      "lastModificationDate": 1753638672682,
+      "lastModificationDate": 1754270137384,
       "contentHash": "25c8108f36fdd472bc78d4c4af240c11",
       "sourceName": "@openzeppelin/contracts/security/Pausable.sol",
       "solcConfig": {
@@ -435,9 +435,51 @@
         "MEVProtector"
       ]
     },
+    "/home/vivek/vivek/aegilon/contracts/MEVProtectorAdvanced.sol": {
+      "lastModificationDate": 1753693274802,
+      "contentHash": "60c29765ab713f6b8386a154228b182b",
+      "sourceName": "contracts/MEVProtectorAdvanced.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./MEVDetector.sol",
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "@openzeppelin/contracts/security/ReentrancyGuard.sol",
+        "@openzeppelin/contracts/access/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "MEVProtectorAdvanced"
+      ]
+    },
     "/home/vivek/vivek/aegilon/contracts/MEVDetector.sol": {
-      "lastModificationDate": 1753676760447,
-      "contentHash": "1e4c26ff85459f56607354f544f908ec",
+      "lastModificationDate": 1754279614039,
+      "contentHash": "fe3a61644100603f85cadabf7903cf5d",
       "sourceName": "contracts/MEVDetector.sol",
       "solcConfig": {
         "version": "0.8.20",
@@ -476,7 +518,7 @@
       ]
     },
     "/home/vivek/vivek/aegilon/node_modules/@redstone-finance/evm-connector/contracts/data-services/MainDemoConsumerBase.sol": {
-      "lastModificationDate": 1753676617734,
+      "lastModificationDate": 1754270170558,
       "contentHash": "172f555c38efd6ff3bc593edc995ff8b",
       "sourceName": "@redstone-finance/evm-connector/contracts/data-services/MainDemoConsumerBase.sol",
       "solcConfig": {
@@ -515,7 +557,7 @@
       ]
     },
     "/home/vivek/vivek/aegilon/node_modules/@redstone-finance/evm-connector/contracts/core/RedstoneConsumerNumericBase.sol": {
-      "lastModificationDate": 1753676617741,
+      "lastModificationDate": 1754270170573,
       "contentHash": "beb059353410c61c07bf21e34d8a181d",
       "sourceName": "@redstone-finance/evm-connector/contracts/core/RedstoneConsumerNumericBase.sol",
       "solcConfig": {
@@ -554,7 +596,7 @@
       ]
     },
     "/home/vivek/vivek/aegilon/node_modules/@redstone-finance/evm-connector/contracts/core/RedstoneConsumerBase.sol": {
-      "lastModificationDate": 1753676617740,
+      "lastModificationDate": 1754270170573,
       "contentHash": "c02352dc90ee5c9bc35d722915ed1694",
       "sourceName": "@redstone-finance/evm-connector/contracts/core/RedstoneConsumerBase.sol",
       "solcConfig": {
@@ -597,7 +639,7 @@
       ]
     },
     "/home/vivek/vivek/aegilon/node_modules/@redstone-finance/evm-connector/contracts/libs/BitmapLib.sol": {
-      "lastModificationDate": 1753676617728,
+      "lastModificationDate": 1754270170574,
       "contentHash": "254cdbc8ac14a44e51b81290ca50b8f7",
       "sourceName": "@redstone-finance/evm-connector/contracts/libs/BitmapLib.sol",
       "solcConfig": {
@@ -634,7 +676,7 @@
       ]
     },
     "/home/vivek/vivek/aegilon/node_modules/@redstone-finance/evm-connector/contracts/libs/SignatureLib.sol": {
-      "lastModificationDate": 1753676617753,
+      "lastModificationDate": 1754270170571,
       "contentHash": "1e303e41cca04514e004ba4c81460e5c",
       "sourceName": "@redstone-finance/evm-connector/contracts/libs/SignatureLib.sol",
       "solcConfig": {
@@ -670,84 +712,8 @@
         "SignatureLib"
       ]
     },
-    "/home/vivek/vivek/aegilon/node_modules/@redstone-finance/evm-connector/contracts/core/RedstoneConstants.sol": {
-      "lastModificationDate": 1753676617740,
-      "contentHash": "e3e8a019c0bfbdaad2d0af07c090271e",
-      "sourceName": "@redstone-finance/evm-connector/contracts/core/RedstoneConstants.sol",
-      "solcConfig": {
-        "version": "0.8.20",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "viaIR": true,
-          "evmVersion": "paris",
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.17"
-      ],
-      "artifacts": [
-        "RedstoneConstants"
-      ]
-    },
-    "/home/vivek/vivek/aegilon/node_modules/@redstone-finance/evm-connector/contracts/core/CalldataExtractor.sol": {
-      "lastModificationDate": 1753676617732,
-      "contentHash": "e7401ae098a442d80b2bac93879be07c",
-      "sourceName": "@redstone-finance/evm-connector/contracts/core/CalldataExtractor.sol",
-      "solcConfig": {
-        "version": "0.8.20",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "viaIR": true,
-          "evmVersion": "paris",
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./RedstoneConstants.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.17"
-      ],
-      "artifacts": [
-        "CalldataExtractor"
-      ]
-    },
     "/home/vivek/vivek/aegilon/node_modules/@redstone-finance/evm-connector/contracts/core/RedstoneDefaultsLib.sol": {
-      "lastModificationDate": 1753676617743,
+      "lastModificationDate": 1754270170574,
       "contentHash": "c9d236d4db8d6faaf53c9ae452e14ca2",
       "sourceName": "@redstone-finance/evm-connector/contracts/core/RedstoneDefaultsLib.sol",
       "solcConfig": {
@@ -785,8 +751,84 @@
         "RedstoneDefaultsLib"
       ]
     },
+    "/home/vivek/vivek/aegilon/node_modules/@redstone-finance/evm-connector/contracts/core/CalldataExtractor.sol": {
+      "lastModificationDate": 1754270170568,
+      "contentHash": "e7401ae098a442d80b2bac93879be07c",
+      "sourceName": "@redstone-finance/evm-connector/contracts/core/CalldataExtractor.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./RedstoneConstants.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.17"
+      ],
+      "artifacts": [
+        "CalldataExtractor"
+      ]
+    },
+    "/home/vivek/vivek/aegilon/node_modules/@redstone-finance/evm-connector/contracts/core/RedstoneConstants.sol": {
+      "lastModificationDate": 1754270170573,
+      "contentHash": "e3e8a019c0bfbdaad2d0af07c090271e",
+      "sourceName": "@redstone-finance/evm-connector/contracts/core/RedstoneConstants.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.17"
+      ],
+      "artifacts": [
+        "RedstoneConstants"
+      ]
+    },
     "/home/vivek/vivek/aegilon/node_modules/@redstone-finance/evm-connector/contracts/libs/NumericArrayLib.sol": {
-      "lastModificationDate": 1753676617736,
+      "lastModificationDate": 1754270170574,
       "contentHash": "a4373a31f6d2f6ab1440580e588a1ff7",
       "sourceName": "@redstone-finance/evm-connector/contracts/libs/NumericArrayLib.sol",
       "solcConfig": {
@@ -822,51 +864,9 @@
         "NumericArrayLib"
       ]
     },
-    "/home/vivek/vivek/aegilon/contracts/MEVProtectorAdvanced.sol": {
-      "lastModificationDate": 1753677172376,
-      "contentHash": "60c29765ab713f6b8386a154228b182b",
-      "sourceName": "contracts/MEVProtectorAdvanced.sol",
-      "solcConfig": {
-        "version": "0.8.20",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "viaIR": true,
-          "evmVersion": "paris",
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./MEVDetector.sol",
-        "@openzeppelin/contracts/token/ERC20/IERC20.sol",
-        "@openzeppelin/contracts/security/ReentrancyGuard.sol",
-        "@openzeppelin/contracts/access/Ownable.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "MEVProtectorAdvanced"
-      ]
-    },
     "/home/vivek/vivek/aegilon/contracts/MockDEXRouter.sol": {
-      "lastModificationDate": 1754276856874,
-      "contentHash": "a4e1fc44e5afaf2bbb41f586d01db4e1",
+      "lastModificationDate": 1754280070042,
+      "contentHash": "f357a7c536780b1a3e5ff78164753737",
       "sourceName": "contracts/MockDEXRouter.sol",
       "solcConfig": {
         "version": "0.8.20",

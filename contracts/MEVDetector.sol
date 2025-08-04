@@ -94,8 +94,8 @@ contract MEVDetector is Ownable, MainDemoConsumerBase {
         lastUpdateTimestamp[feedId] = block.timestamp;
         
         // Calculate price delta and slippage
-        uint256 delta = currentPrice > expectedPrice ? 
-            currentPrice - expectedPrice : 
+        uint256 delta = currentPrice > expectedPrice ?
+            currentPrice - expectedPrice :
             expectedPrice - currentPrice;
         uint256 slippagePercentage = (delta * 10000) / expectedPrice;
         
@@ -283,5 +283,158 @@ contract MEVDetector is Ownable, MainDemoConsumerBase {
      */
     function getAverageGasPrice() external view returns (uint256) {
         return _getAverageGasPrice();
+    }
+
+    /**
+     * @dev Test-only MEV detection that doesn't require oracle calldata
+     * @param feedId Price feed identifier  
+     * @param mockPrice Mock price to use instead of oracle
+     * @param txGasPrice Transaction gas price
+     * @return isThreat Whether MEV threat was detected
+     * @return threatType Type of threat detected
+     * @return riskScore Risk score (0-10000)
+     */
+    function detectMEVWithMockPrice(
+        bytes32 feedId,
+        uint256 mockPrice,
+        uint256 txGasPrice
+    ) external onlyOwner returns (
+        bool isThreat,
+        ThreatType threatType,
+        uint256 riskScore
+    ) {
+        // Use mock price instead of oracle
+        uint256 currentPrice = mockPrice;
+        
+        // Update price history
+        lastPrices[feedId] = currentPrice;
+        lastUpdateTimestamp[feedId] = block.timestamp;
+        
+        // Update gas history
+        _updateGasHistory(txGasPrice);
+        
+        // Use expectedPrice as lastPrice for delta calculation
+        uint256 expectedPrice = lastPrices[feedId] > 0 ? lastPrices[feedId] : currentPrice;
+        uint256 delta = currentPrice > expectedPrice ?
+            currentPrice - expectedPrice :
+            expectedPrice - currentPrice;
+        uint256 slippagePercentage = expectedPrice > 0 ? (delta * 10000) / expectedPrice : 0;
+        
+        // Detect sandwich attack (high slippage)
+        if (slippagePercentage > riskThreshold) {
+            riskScore = slippagePercentage;
+            threatType = ThreatType.SANDWICH;
+            isThreat = true;
+            
+            emit MEVThreatDetected(
+                msg.sender,
+                feedId,
+                threatType,
+                riskScore,
+                block.timestamp
+            );
+            
+            return (isThreat, threatType, riskScore);
+        }
+        
+        // Detect front-running (abnormal gas price)
+        uint256 avgGasPrice = _getAverageGasPrice();
+        if (avgGasPrice > 0 && _detectFrontRunning(txGasPrice, avgGasPrice)) {
+            riskScore = ((txGasPrice - avgGasPrice) * 10000) / avgGasPrice;
+            threatType = ThreatType.FRONTRUN;
+            isThreat = true;
+            
+            emit MEVThreatDetected(
+                msg.sender,
+                feedId,
+                threatType,
+                riskScore,
+                block.timestamp
+            );
+            
+            return (isThreat, threatType, riskScore);
+        }
+        
+        // Detect arbitrage patterns (rapid price changes)
+        if (_detectArbitragePattern(feedId, currentPrice)) {
+            riskScore = 300; // Fixed score for arbitrage detection
+            threatType = ThreatType.ARBITRAGE;
+            isThreat = true;
+            
+            emit MEVThreatDetected(
+                msg.sender,
+                feedId,
+                threatType,
+                riskScore,
+                block.timestamp
+            );
+            
+            return (isThreat, threatType, riskScore);
+        }
+        
+        // No threat detected
+        return (false, ThreatType.UNKNOWN, 0);
+    }
+
+    /**
+     * @dev View-only MEV detection for testing (doesn't modify state)
+     * @param feedId Price feed identifier  
+     * @param mockPrice Mock price to use instead of oracle
+     * @param txGasPrice Transaction gas price
+     * @return isThreat Whether MEV threat was detected
+     * @return threatType Type of threat detected
+     * @return riskScore Risk score (0-10000)
+     */
+    function detectMEVWithMockPriceView(
+        bytes32 feedId,
+        uint256 mockPrice,
+        uint256 txGasPrice
+    ) external view returns (
+        bool isThreat,
+        ThreatType threatType,
+        uint256 riskScore
+    ) {
+        // Use mock price instead of oracle
+        uint256 currentPrice = mockPrice;
+        
+        // Use expectedPrice as lastPrice for delta calculation
+        uint256 expectedPrice = lastPrices[feedId] > 0 ? lastPrices[feedId] : currentPrice;
+        uint256 delta = currentPrice > expectedPrice ?
+            currentPrice - expectedPrice :
+            expectedPrice - currentPrice;
+        uint256 slippagePercentage = expectedPrice > 0 ? (delta * 10000) / expectedPrice : 0;
+        
+        // Detect sandwich attack (high slippage)
+        if (slippagePercentage > riskThreshold) {
+            riskScore = slippagePercentage;
+            threatType = ThreatType.SANDWICH;
+            isThreat = true;
+            return (isThreat, threatType, riskScore);
+        }
+        
+        // Detect front-running (abnormal gas price)
+        uint256 avgGasPrice = _getAverageGasPrice();
+        if (avgGasPrice > 0 && _detectFrontRunning(txGasPrice, avgGasPrice)) {
+            riskScore = ((txGasPrice - avgGasPrice) * 10000) / avgGasPrice;
+            threatType = ThreatType.FRONTRUN;
+            isThreat = true;
+            return (isThreat, threatType, riskScore);
+        }
+        
+        // Detect arbitrage patterns (rapid price changes) - simplified for view function
+        if (lastPrices[feedId] > 0) {
+            uint256 priceChange = currentPrice > lastPrices[feedId] ? 
+                currentPrice - lastPrices[feedId] : 
+                lastPrices[feedId] - currentPrice;
+            if (priceChange * 10000 / lastPrices[feedId] > 200) { // 2% change threshold
+                riskScore = 300; // Fixed score for arbitrage detection
+                threatType = ThreatType.ARBITRAGE;
+                isThreat = true;
+                return (isThreat, threatType, riskScore);
+            }
+        }
+        
+        // No threat detected
+        return (false, ThreatType.UNKNOWN, 0);
     }
 }

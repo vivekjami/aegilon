@@ -21,7 +21,7 @@ contract MockDEXRouter {
     
     modifier noMEVThreat(address user, uint256 amount, uint256 gasPrice) {
         uint256 riskScore = calculateMEVRisk(user, amount, gasPrice);
-        if (riskScore > 70) {
+        if (riskScore > 25) { // Lower threshold for testing
             emit MEVThreatDetected(user, riskScore);
             revert("MEV_THREAT_DETECTED");
         }
