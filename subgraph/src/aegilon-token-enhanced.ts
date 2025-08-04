@@ -3,9 +3,6 @@ import { BigInt, log, ethereum } from "@graphprotocol/graph-ts"
 import { Transfer } from "../generated/AegilonToken/AegilonToken"
 import { TokenTransfer, Transaction, MEVAlert, GasPriceAnalytics } from "../generated/schema"
 
-// Import MEV detection functions
-import { analyzeTransactionMEV, processMEVTransaction } from "./mev-detection"
-
 export function handleTransfer(event: Transfer): void {
   log.info("Transfer from {} to {} amount {}", [
     event.params.from.toHexString(),
@@ -32,7 +29,7 @@ export function handleTransfer(event: Transfer): void {
     transaction.to = event.transaction.to
     transaction.value = event.transaction.value
     transaction.gasPrice = event.transaction.gasPrice
-    transaction.gasUsed = event.transaction.gasLimit
+    transaction.gasUsed = event.transaction.gasUsed
     transaction.blockNumber = event.block.number
     transaction.timestamp = event.block.timestamp
     transaction.isMEV = false
@@ -56,11 +53,11 @@ export function handleTransfer(event: Transfer): void {
     let alert = new MEVAlert(alertId)
     alert.threatType = "HIGH_RISK_MEV"
     alert.severity = "MEDIUM"
-    alert.targetAddress = event.transaction.to ? event.transaction.to! : event.transaction.from
+    alert.targetAddress = event.transaction.to || event.transaction.from
     alert.attackerAddress = event.transaction.from
     alert.potentialLoss = BigInt.fromI32(0)
     alert.gasPrice = event.transaction.gasPrice
-    alert.gasCost = event.transaction.gasPrice.times(event.transaction.gasLimit)
+    alert.gasCost = event.transaction.gasPrice.times(event.transaction.gasUsed)
     alert.riskScore = BigInt.fromI32(30)
     alert.detected = true
     alert.prevented = false
@@ -71,9 +68,6 @@ export function handleTransfer(event: Transfer): void {
   }
   
   transaction.save()
-  
-  // Process MEV integration for this token transaction
-  processTokenMEVIntegration(transaction, event.block.timestamp)
 }
 
 export function handleBlock(block: ethereum.Block): void {
@@ -113,20 +107,4 @@ function updateGasAnalytics(timestamp: BigInt, blockNumber: BigInt): void {
   analytics.endTimestamp = timestamp
   analytics.blockNumber = blockNumber
   analytics.save()
-}
-
-/**
- * Process MEV patterns for AegilonToken transactions
- * Integration point between token events and MEV detection
- */
-export function processTokenMEVIntegration(
-  transaction: Transaction,
-  blockTimestamp: BigInt
-): void {
-  // Perform MEV analysis on token-related transactions
-  processMEVTransaction(transaction, blockTimestamp)
-  
-  log.info("MEV integration processed for AegilonToken transaction {}", [
-    transaction.hash.toHexString()
-  ])
 }

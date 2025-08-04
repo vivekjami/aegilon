@@ -16,15 +16,10 @@ dataSources:
       entities:
         - User
         - TokenTransfer
-        - Transaction
-        - MEVAlert
-        - GasPriceAnalytics
       abis:
         - name: AegilonToken
           file: ../artifacts/contracts/AegilonToken.sol/AegilonToken.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
-      blockHandlers:
-        - handler: handleBlock
       file: ./src/aegilon-token.ts
