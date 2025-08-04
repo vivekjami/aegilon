@@ -132,7 +132,7 @@ export function calculateRiskScore(
     score += 15.0
   }
   
-  let scoreFloat = Math.floor(Math.min(score, 100.0))
+  let scoreFloat = Math.floor(Math.min(score, 100.0)) as i32
   return BigInt.fromI32(scoreFloat)
 }
 
