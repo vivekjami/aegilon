@@ -105,7 +105,7 @@ describe("MEVProtectorAdvanced", function () {
                 amountIn: ethers.utils.parseEther("10"),
                 minAmountOut: ethers.utils.parseEther("9"),
                 pricefeedId: ETH_FEED_ID,
-                deadline: Math.floor(Date.now() / 1000) + 3600, // 1 hour from now
+                deadline: Math.floor(Date.now() / 1000) + 7200, // 2 hours from now
                 recipient: user1.address
             };
             
@@ -166,13 +166,17 @@ describe("MEVProtectorAdvanced", function () {
     
     describe("🔒 Security and Access Control", function () {
         it("Should require protection configuration before swap", async function () {
+            // Get current block timestamp and add sufficient buffer
+            const latestBlock = await ethers.provider.getBlock("latest");
+            const deadline = latestBlock.timestamp + 7200; // 2 hours from current block
+            
             const swapParams = {
                 tokenIn: mockToken.address,
                 tokenOut: mockToken.address,
                 amountIn: ethers.utils.parseEther("10"),
                 minAmountOut: ethers.utils.parseEther("9"),
                 pricefeedId: ETH_FEED_ID,
-                deadline: Math.floor(Date.now() / 1000) + 3600, // Fixed: 1 hour from now
+                deadline: deadline,
                 recipient: user2.address
             };
             
@@ -190,13 +194,17 @@ describe("MEVProtectorAdvanced", function () {
                 true // Whitelist mode ON
             );
             
+            // Get current block timestamp and add sufficient buffer
+            const latestBlock = await ethers.provider.getBlock("latest");
+            const deadline = latestBlock.timestamp + 7200; // 2 hours from current block
+            
             const swapParams = {
                 tokenIn: mockToken.address,
                 tokenOut: mockToken.address,
                 amountIn: ethers.utils.parseEther("10"),
                 minAmountOut: ethers.utils.parseEther("9"),
                 pricefeedId: ETH_FEED_ID,
-                deadline: Math.floor(Date.now() / 1000) + 7200, // Fixed: 2 hours from now
+                deadline: deadline,
                 recipient: user1.address
             };
             
@@ -346,13 +354,25 @@ describe("MEVProtectorAdvanced", function () {
         });
         
         it("Should reject zero amount swaps", async function () {
+            // First configure protection for user1
+            await mevProtector.connect(user1).configureProtection(
+                0, // REVERT strategy
+                500,
+                300000,
+                false // Whitelist mode OFF
+            );
+            
+            // Get current block timestamp and add sufficient buffer
+            const latestBlock = await ethers.provider.getBlock("latest");
+            const deadline = latestBlock.timestamp + 7200; // 2 hours from current block
+            
             const zeroAmountParams = {
                 tokenIn: mockToken.address,
                 tokenOut: mockToken.address,
                 amountIn: 0,
                 minAmountOut: ethers.utils.parseEther("9"),
                 pricefeedId: ETH_FEED_ID,
-                deadline: Math.floor(Date.now() / 1000) + 7200, // Fixed: 2 hours from now
+                deadline: deadline,
                 recipient: user1.address
             };
             
