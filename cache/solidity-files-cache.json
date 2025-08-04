@@ -863,6 +863,44 @@
       "artifacts": [
         "MEVProtectorAdvanced"
       ]
+    },
+    "/home/vivek/vivek/aegilon/contracts/MockDEXRouter.sol": {
+      "lastModificationDate": 1754276856874,
+      "contentHash": "a4e1fc44e5afaf2bbb41f586d01db4e1",
+      "sourceName": "contracts/MockDEXRouter.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "MockDEXRouter",
+        "MockERC20"
+      ]
     }
   }
 }
