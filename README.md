@@ -292,37 +292,6 @@ Special thanks to the Etherlink team and technology partners:
     └── Community building initiatives
 ```
 
-### Utility Functions
-
-#### 🛡️ **MEV Protection Staking**
-- **Stake AEG** to activate MEV protection
-- **Protection Levels** based on staked amount:
-  - **Level 1** (10+ AEG): Basic front-running protection
-  - **Level 2** (100+ AEG): Sandwich attack prevention
-  - **Level 3** (1,000+ AEG): Advanced multi-vector protection
-  - **Level 4** (5,000+ AEG): Premium institutional-grade protection
-  - **Level 5** (10,000+ AEG): Maximum protection + priority support
-
-#### 🏛️ **Governance Rights**
-- **Proposal Creation**: 100,000 AEG minimum
-- **Voting Power**: 1 AEG = 1 vote
-- **Governance Scope**:
-  - Protocol parameter adjustments
-  - MEV detection algorithm updates
-  - Treasury fund allocation
-  - Partnership approvals
-
-#### 💰 **Reward Mechanisms**
-- **Staking APR**: 5% base rate (boosted for active protection)
-- **Threat Detection**: 10 AEG reward per verified threat report
-- **Protection Success**: 5 AEG bonus for successful MEV blocks
-- **Referral Program**: 2% of referred user's first-year staking rewards
-
-#### 🔧 **Premium Features**
-- **Advanced Analytics**: Historical MEV attack analysis
-- **Custom Alerts**: Real-time threat notifications
-- **API Access**: Integration with trading bots and strategies
-- **Priority Support**: Dedicated protection team assistance
 
 ### Economic Model
 
@@ -352,13 +321,6 @@ aegilon.activateProtection()
 # Automatic rewards for staking + bonuses for threat reports
 ```
 
-### Contract Addresses (Etherlink Testnet)
-```
-🏛️ AegilonToken (AEG): [Will be populated after deployment]
-🛡️ MEVProtector: [Will be populated after deployment]
-📊 Treasury: [Will be populated after deployment]
-💧 Liquidity Pool: [Will be populated after deployment]
-```
 
 ## 🚀 Competitive Advantages
 
